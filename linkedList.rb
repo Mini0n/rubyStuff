@@ -74,19 +74,22 @@ class LinkedList
     delete self.head.data while self.head
   end
 
-  # goes through list and yield each element
+  # goes through list and yields each element
   def each
-  end
-
-
-  def print
-    n = head
-    r = ''
-    until n.nil? do
-      r += n.data + ' > '
+    return nil unless block_given?
+    n = self.head
+    while n
+      yield n
       n = n.next
     end
-    puts r + '|'
+  end
+
+  # prints the list
+  def print
+    return '[empty]' unless self.head
+    r = '| '
+    each { |el| r += el.data + ' | ' }
+    r
   end
 
   # -- helpers --
@@ -110,6 +113,7 @@ list2.insert 'mosca4'
 list2.insert 'mosca5'
 
 list3 = list.cat list2
+list3.print
 
 byebug
 
