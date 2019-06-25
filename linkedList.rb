@@ -12,7 +12,7 @@ class Node
 
   def initialize(data)
     self.data = data
-    self.next = nil # <- redundant but clear, tt's nil if unitilized
+    self.next = nil # <- redundant but clear, it's nil if unitilized
   end
 end
 
@@ -26,9 +26,9 @@ class LinkedList
     self.size = 0
   end
 
-  def insert data
+  def insert(data)
     n = Node.new(data)
-    if self.head
+    if head
       self.tail.next = n
     else
       self.head = n
@@ -37,26 +37,22 @@ class LinkedList
     self.size += 1
   end
 
-  def delete data
-    return nil unless data
-    return unless self.size > 0
-    n = head
-    # address for found in head
-    if (found(data, n) & n.next.nil?)
-      self.head = nil
-      self.tail = nil
-      self.size -= 1 # <- refact
+  def delete(data)
+    return nil unless self.head
+    n = self.head
+    if (r = found(n, data))
+      self.head = n.next
     else
-      self.head = head.next
-      self.size -= 1 # <- refact
+      n = n.next until n.next.nil? || (r = found(n.next, data))
+      n.next = n.next.next if r
     end
-    # adreess for found in "body"
-
-    # address for found tail
+    self.tail = n unless n.next || !r
+    self.tail = nil unless self.head
+    self.size -= 1 if r
   end
 
   def print
-    n = self.head
+    n = head
     r = ''
     until n.nil? do
       r += n.data + ' > '
@@ -66,8 +62,8 @@ class LinkedList
   end
 
   # -- helpers --
-  def found(data, node)
-    data == node.data
+  def found(node, data)
+    node.data == data
   end
 
 
@@ -77,7 +73,14 @@ end
 
 
 list = LinkedList.new
+list.insert 'mosca'
+list.insert 'mosca2'
+list.insert 'mosca3'
+
+# r = list.delete ''
+# puts 'result: ' + r.inspect
 
 byebug
+
 
 puts '--- test ended'
