@@ -26,6 +26,7 @@ class LinkedList
     self.size = 0
   end
 
+  # insert a new node with the given data
   def insert(data)
     n = Node.new(data)
     if head
@@ -37,6 +38,7 @@ class LinkedList
     self.size += 1
   end
 
+  # delete the 1st found element with the given data
   def delete(data)
     return nil unless self.head
     n = self.head
@@ -50,6 +52,23 @@ class LinkedList
     self.tail = nil unless self.head
     self.size -= 1 if r
   end
+
+  # returns a new LinkedList with the elems: self + list
+  def cat(list)
+    r = self.dup
+    r.tail.next = list.head
+    r.tail = list.tail
+    r.size += list.size
+    r
+  end
+
+  # clear list
+  def clear
+    delete self.head.data while self.head
+  end
+
+
+
 
   def print
     n = head
@@ -77,8 +96,10 @@ list.insert 'mosca'
 list.insert 'mosca2'
 list.insert 'mosca3'
 
-# r = list.delete ''
-# puts 'result: ' + r.inspect
+list2 = LinkedList.new
+list2.insert 'mosca4'
+
+list3 = list.cat list2
 
 byebug
 
