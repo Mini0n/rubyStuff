@@ -1,6 +1,5 @@
 require 'byebug'
 # ------------------------------------------------------------------------------
-
 # Definition:
 # [ 1 | next ] -> [ 2 | next ] -> [ 3 | nil ]
 #     (head)   ...  ("body")  ...   (tail)
@@ -96,9 +95,6 @@ class LinkedList
   def found(node, data)
     node.data == data
   end
-
-
-
 end
 
 
