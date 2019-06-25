@@ -6,3 +6,7 @@ Metrics/MethodLength:
 # Offense count: 1
 Metrics/CyclomaticComplexity:
   Max: 10
+
+# Offense count: 1
+Metrics/PerceivedComplexity:
+  Max: 10
