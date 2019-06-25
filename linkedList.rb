@@ -62,12 +62,21 @@ class LinkedList
     r
   end
 
+  # returns the 1st node found with the data searched
+  def find(data)
+    n = self.head
+    n = n.next until n.nil? || (r = found(n, data))
+    return n if r
+  end
+
   # clear list
   def clear
     delete self.head.data while self.head
   end
 
-
+  # goes through list and yield each element
+  def each
+  end
 
 
   def print
@@ -98,6 +107,7 @@ list.insert 'mosca3'
 
 list2 = LinkedList.new
 list2.insert 'mosca4'
+list2.insert 'mosca5'
 
 list3 = list.cat list2
 
