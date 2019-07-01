@@ -5,6 +5,7 @@ require 'byebug'
 #  nil < [prev|head|next] < [prev|body|next] > [prev|tail|next] > nil
 # ------------------------------------------------------------------------------
 
+# Node class
 class Node
   attr_accessor :prev, :next, :data
 
@@ -13,19 +14,10 @@ class Node
   end
 end
 
+# Double Linked List class
 class DoubleList
-
   # inserts a node
-  def insert(data)
-
-  end
+  def insert(data); end
 
   # deletes a node
-
 end
-
-# Despertar con los Chemicals acaba de ser terrible y bonito.
-# Te despierta la música sintiendo que todo va mal y subiendo desde el ensueño
-# Despiertas y la música dice: muévete, sin saber qué.
-# Ves qué y la regadera es lejos del escolofrío del recuerdo.
-# regresas calientito y estás listo para puchar pinches «replay»
