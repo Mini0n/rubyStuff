@@ -10,3 +10,6 @@ Metrics/CyclomaticComplexity:
 # Offense count: 1
 Metrics/PerceivedComplexity:
   Max: 10
+
+Metrics/LineLength:
+  Max: 100
